@@ -1,0 +1,30 @@
+level intro1
+
+git commit
+git commit
+
+level intro2
+git branch bugFix
+git checkout bugFix
+
+OU
+
+git checkout -b bugFix
+
+level intro3
+git branch bugFix
+git checkout bugFix
+git commit
+git checkout master
+git commit
+git merge bugFix
+
+level intro4
+git checkout -b bugFix
+git commit
+git checkout master
+git commit
+gti checkout bugFix
+git rebase master
+
+
