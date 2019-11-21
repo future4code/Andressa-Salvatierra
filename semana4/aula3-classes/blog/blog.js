@@ -17,9 +17,19 @@ function enviarPost() {
     document.getElementById("titulo").value = ""
     document.getElementById("autor").value = ""
     document.getElementById("conteudo").value = ""
-        // publicarPost()
+    criarPost()
 }
 
-// function publicarPost() {
+function criarPost() {
+    const containerPost = document.getElementById("container-posts")
+    containerPost.innerHTML = ""
+    for (el of arrayPostsBlog) {
+        containerPost.innerHTML += publicarPost(el)
+    }
+}
 
-// }
+function publicarPost(novoPost) {
+    return "<article id='container-novo-post'> <h2>Titulo:</h2>" + novoPost.titulo +
+        "<h2>Autor:</h2>" + novoPost.autor +
+        "<h2>Conteúdo:</h2>" + novoPost.conteudo + "</article>"
+}
