@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="despesas.css">
+    <script src="despesas.js" defer></script>
+    <title>Controle de Despesas</title>
+</head>
+
+<body>
+    <h1>Controle de Despesas</h1>
+    <section id="cadastro-de-despesa">
+        <h2>Cadastrar despesa</h2>
+        <label for="tipo-de-despesa"><p>Valor: </p></label>
+        <input id="valor" type="number">
+        <label for="tipo-de-despesa"><p>Tipo de despesa:</p></label>
+        <select id="tipo-de-despesa">
+            <option value="casa">Despesas de casa</option>
+            <option value="alimentacao">Despesas de alimentação</option>
+            <option value="viagem">Despesas de viagem</option>
+        </select>
+        <label for="descricao"><p>Descrição: </p></label>
+        <input id="descricao" type="text"><br>
+        <br>
+        <button id="cadastrar-despesa" onclick="enviarDespesas()">Cadastrar despesa</button>
+    </section>
+
+
+
+</body>
+
+</html>
