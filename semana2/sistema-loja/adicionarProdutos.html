@@ -5,31 +5,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <title>Adicionar Produto</title>
 </head>
 
 <body>
-    <h2>Adicionar Produto</h2>
-    <hr>
+    <header>
+        <h2>Adicionar Produto</h2>
+        <hr>
+    </header>
 
-    <ul>
+    <main class="tudo-azul">
+        <ul id="form">
 
-        <form action="/action_page.php">
-            <li>Foto do produto: <br><input type="file" name="myFile"></li><br>
-            <input type="submit"><br><br>
-        </form>
+            <form action="/action_page.php">
+                <li>
+                    <label for="foto">Inserir imagem: </label>
+                    <input id="foto" type="file" name="myFile">
+                </li>
+                <br>
+                <input type="submit" style="color: black;"><br><br>
+            </form>
 
-        <form action="/action_page.php">
-            <li>Descrição do produto: <input type="text" name="descricao"></li><br><br>
-            <li>Preço: <input type="text" name="preco"></li><br><br>
-            <li>Quantidade disponível: <input type="number" name="quantidade"></li><br><br>
-            <input type="submit" value="Submit form">
-        </form>
-    </ul>
+            <form action="/action_page.php">
+                <li>
+                    <label for="descricao">Descrição do produto: </label>
+                    <input id="descricao" type="text" name="descricao">
+                </li><br><br>
+                <li>
+                    <label for="preco">Preço: </label>
+                    <input type="text" name="preco">
+                </li><br><br>
+                <li>
+                    <label for="quantidade">Quantidade disponível: </label>
+                    <input type="number" name="quantidade">
+                </li><br><br>
+                <input type="submit" value="Enviar dados" style="color:black">
+            </form>
+        </ul>
+    </main>
 
-    <a href="main.html">
-        <h3>Voltar para a home</h3>
-    </a>
+    <footer>
+        <hr>
+        <a href="main.html">
+            <h2>Voltar para a home</h2>
+        </a>
+    </footer>
 </body>
 
 </html>
