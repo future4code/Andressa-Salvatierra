@@ -86,6 +86,11 @@ div img {
     font-size: 60px;
 }
 
+#container-texto {
+    position: relative;
+    top: 30%;
+}
+
 
 /**
   *
