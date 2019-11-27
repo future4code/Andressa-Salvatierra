@@ -1,0 +1,19 @@
+#container-post {
+    display: flex;
+    justify-content: center;
+}
+
+article {
+    border: 1px solid palevioletred;
+    display: flex;
+    flex-direction: column;
+}
+
+#usuario {
+    display: flex;
+    justify-content: left;
+}
+
+#icone {
+    margin-right: 5px;
+}
