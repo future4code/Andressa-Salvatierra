@@ -1,0 +1,7 @@
+#cadastro-de-despesa {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-start;
+    border: black dotted 1px;
+}
