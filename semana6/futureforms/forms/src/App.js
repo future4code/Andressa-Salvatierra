@@ -84,7 +84,7 @@ render() {
   return (
     <ContainerDiv>
       {tela}
-      <Botao onClick={this.controleCliques, () => {}} id="button">Próxima etapa</Botao>
+      <Botao onClick={this.controleCliques} id="button">Próxima etapa</Botao>
 
     </ContainerDiv> 
   );
