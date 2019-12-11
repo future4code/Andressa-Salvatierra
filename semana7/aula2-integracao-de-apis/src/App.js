@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import CadastroUsuario from './componentes/CadastroUsuario';
 import ListaUsuarios from './componentes/ListaUsuarios';
+import axios from 'axios';
 
 const MainContainer = styled.div`
   width: 100%;

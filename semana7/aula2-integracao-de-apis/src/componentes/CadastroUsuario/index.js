@@ -18,6 +18,9 @@ const Save = styled.button`
   color: white;
   background-color: blue;
 `
+
+const baseURL = "https://us-central1-future4-users.cloudfunctions.net/api"
+
 class CadastroUsuario extends React.Component {
     constructor(props) {
         super(props)
@@ -37,8 +40,30 @@ class CadastroUsuario extends React.Component {
     }
     
     createNewUser = () => {
-        
+        const userToBeCreated = {
+            name: this.state.nome,
+            email: this.state.email
+        }
+    
+
+        const axiosHeader = {
+            headers: {
+            "api-token": "andressa"
+        }
     }
+        
+        const newUserRequest = axios.post(`${baseURL}/users/createUser`, userToBeCreated, axiosHeader)
+        
+        newUserRequest.then(() => {
+                this.setState({nome: "", email: ""})
+            })
+        
+        newUserRequest.catch((error) => {
+            console.log(error.message)
+        })
+        
+}
+    
     
     
     render() {
@@ -50,13 +75,10 @@ class CadastroUsuario extends React.Component {
                 <label for="email">E-mail: </label>
                 <input id="email" type="email" value={this.state.email} onChange={this.handleChangeEmail}></input>
                 <br />
-                <Save>Salvar</Save>
+                <Save onClick={this.createNewUser}>Salvar</Save>
             </FormContainer>
         )
-    
     }
-    
-
 }
 
 export default CadastroUsuario;
