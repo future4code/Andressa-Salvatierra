@@ -21,20 +21,22 @@ class App extends React.Component {
     }
   }
 
+  handleChangePage = () => {
+    if (this.state.tela === "cadastro") {
+      this.setState({tela: "usuarios"})
+    } else {
+      this.setState({tela: "cadastro"})
+    }
+  }
 
   render() {
-    let tela;
-    if (this.state.tela === "cadastro") {
-      tela = (
-        <MainContainer>
-        <Botao>Ir para a página de lista</Botao>
-        <CadastroUsuario></CadastroUsuario>
-        <ListaUsuarios></ListaUsuarios>
+    const buttonText = this.state.tela === "cadastro" ? "Mostrar Lista de Usuários" : "Mostrar Formulário de Cadastro"
+
+    return ( 
+      <MainContainer>
+      <Botao onClick={this.handleChangePage}>{buttonText}</Botao>
+      {this.state.tela === "cadastro" ? <CadastroUsuario/> : <ListaUsuarios/>}
       </MainContainer>
-      )
-    }
-    return(
-      <div>{tela}</div>
     )
   }
 }

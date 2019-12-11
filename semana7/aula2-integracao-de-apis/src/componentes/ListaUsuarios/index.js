@@ -24,7 +24,7 @@ function ListaUsuarios() {
         <ListaContainer>
         <h1>Usuários Cadastrados:</h1>
         <Lista>
-            <li>Nome <h3>X</h3></li>
+            <li>Nome <span>X</span></li>
         </Lista>
         </ListaContainer>
     )
