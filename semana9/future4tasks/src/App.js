@@ -2,42 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import TaskContainer from './Components/TaskContainer';
 
-//
-
-const createNewTaskActionCreator = (input) => {
-  return {
-    type: "CREATE_NEW_TASK",
-    payload: {input: input.target.value, completed: false}
-  }
-}
-
-const listAllTasksActionCreator = () => {
-  return {
-    type: "LIST_ALL_TASKS",
-    payload: {}
-  }
-}
-
-const listCompletedTasksActionCreator = () => {
-  return {
-    type: "LIST_COMPLETED_TASKS",
-    payload: {}
-  }
-}
-
-const listPendingTasksActionCreator = () => {
-  return {
-    type: "LIST_PENDING_TASKS",
-    payload: {}
-  }
-}
-
-const tasksShownCurrentScreenActionCreator = () => {
-  return {
-    type: "TASKS_SHOWN_CURRENT_SCREEN",
-    payload: {}
-  }
-}
 
 //*** ESTILIZAÇÃO ***//
 
