@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import TaskContainer from './Components/TaskContainer';
+import TaskContainer from './Components/TodoContainer';
+import Header from "./Components/Header"
 
 
 //*** ESTILIZAÇÃO ***//
@@ -11,28 +12,21 @@ const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
   font-family: sans-serif;
+  align-items: center;
 `
 
-const PageTitle = styled.h1`
-  margin: 0 auto;
-  padding: 30px; 
-`
+//*** COMPONENTE DE CLASSE ***//
 
-const NewTask = styled.input`
-  width: 800px;
-  height: 30px;
-  margin: 0 auto;
-  `
-//*** COMPONENTE FUNCIONAL ***//
-
-function App() {
-  return (
-    <MainContainer>
-      <PageTitle>4 Task</PageTitle>
-      <NewTask placeholder="O que tem que ser feito?"></NewTask>
-      <TaskContainer/>
-    </MainContainer>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <MainContainer>
+        <Header />
+        <TaskContainer/>
+      </MainContainer>
+    );
+  }
+  
 }
 
 export default App;

@@ -1,11 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import Checkbox from '@material-ui/core/Checkbox';
-import ListItemText from '@material-ui/core/ListItemText';
+import TodoItem from './TodoItem';
 
-const TaskDivContainer = styled.div`
+
+const Container = styled.div`
     border: 1px solid lightgrey;
     margin: 0 auto;
     margin-top: 1px;
@@ -29,17 +27,10 @@ const AllFilters = styled.span`
 `
 
 
-function TaskContainer() {
+function TodoContainer() {
     return (
-        <TaskDivContainer>
-            <List>
-                {[0, 1, 2, 3].map(value => (
-                    <ListItem key={value} role={undefined}>
-                        <Checkbox/>
-                        <ListItemText primary={`Tarefa ${value + 1}`} />
-                    </ListItem>
-                ))}
-            </List>
+        <Container>
+            <TodoItem />
             <hr></hr>
             <Filters>            
                 <AllFilters>Marcar todas como completas</AllFilters>
@@ -48,9 +39,9 @@ function TaskContainer() {
                 <AllFilters>Completas </AllFilters>
             </Filters>
 
-        </TaskDivContainer>
+        </Container>
 
     )
 }
 
-export default TaskContainer;
+export default TodoContainer;
