@@ -1,5 +1,5 @@
 import React from "react";
-import { Provider } from "react-redux";
+import { Provider, connect } from "react-redux";
 import thunk from "redux-thunk";
 import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
 import theme from "../../style/theme";

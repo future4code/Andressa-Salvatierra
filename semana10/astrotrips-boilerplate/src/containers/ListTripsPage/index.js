@@ -1,5 +1,18 @@
 import React from "react";
+import { connect } from "react-redux";
 
-const ListTripsPage = () => <div>Lista de Viagens</div>
+class ListTripsPage extends React.Component {
+    constructor(props) {
+        super(props)
+    }
 
-export default ListTripsPage;
+    render () {
+        return (
+            <div>
+                Lista de Viagens
+            </div>
+        )
+    }
+} 
+
+export default connect() (ListTripsPage);

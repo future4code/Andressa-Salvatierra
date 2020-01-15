@@ -1,5 +1,6 @@
 import React from "react";
+import { connect } from "react-redux";
 
 const TripDetailsPage = () => <div>Detalhes da viagem</div>
 
-export default TripDetailsPage;
+export default connect()(TripDetailsPage);

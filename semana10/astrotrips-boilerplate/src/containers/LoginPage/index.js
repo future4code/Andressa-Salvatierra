@@ -5,6 +5,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import styled from "styled-components";
 
+
 const LoginWrapper = styled.form`
   width: 100%;
   height: 100vh;
@@ -54,4 +55,4 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+export default connect()(LoginPage);
