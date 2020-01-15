@@ -26,7 +26,7 @@ function Router(props) {
     <ConnectedRouter history={props.history}>
       <Switch>
         <Route path={routes.root} component={HomePage} exact/>
-        <Route path={routes.home} component={HomePage} exact/>
+        <Route path={routes.homePage} component={HomePage} exact/>
         <Route path={routes.login} component={LoginPage} exact/>
         <Route path={routes.application} component={ApplicationPage} exact/>
         <Route path={routes.createTrip} component={CreateTripPage} exact/>
