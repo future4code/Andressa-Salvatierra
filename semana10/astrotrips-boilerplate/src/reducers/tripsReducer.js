@@ -1,6 +1,7 @@
 const initialState = {
     allTrips: [],
-    tripId: ""
+    tripId: "",
+    detailsClickedTrip: {}
 }
 
 const tripsReducer = (state = initialState, action) => {
@@ -9,6 +10,8 @@ const tripsReducer = (state = initialState, action) => {
             return {...state, allTrips: action.payload.trips}
         case "GET_TRIP_ID":
             return {...state, tripId: action.payload.tripId}
+        case "SET_CLICKED_TRIP_DETAILS":
+            return {...state, detailsClickedTrip: action.payload.details}
         default:
             return state;
     }

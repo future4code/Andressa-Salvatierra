@@ -1,33 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import { fetchTrips } from "../../actions/tripActions"
+import { fetchClickedTripDetails } from "../../actions/tripActions"
 
 class TripDetailsPage extends React.Component {
 
     componentDidMount() {
-        this.props.fetchTrips()
+        console.log(this.props.clickedTripId)
+        this.props.fetchClickedTrip(this.props.clickedTripId)
     }
 
     render () {
-        console.log(this.props.allTrips)
-        const tripId = "IraGCno6nLATvX8CemI7"
-
-        if (tripId === "IraGCno6nLATvX8CemI7") {
             return (
                 <div>
                     Detalhes da viagem
-                    <ul>
-                        {this.props.allTrips.map((trip) => 
-                            <div>
-                                <li key={new Date().getTime()}>{trip.name}</li>
-                                <li key={new Date().getTime()}>{trip.planet}</li>
-                                <li key={new Date().getTime()}>{trip.date}</li>
-                                <li key={new Date().getTime()}>{trip.description}</li>
-                                <li key={new Date().getTime()}>{trip.durationInDays}</li>
-                                <hr/>
-                            </div>
-                        )}
-                    </ul>
                 </div>
             )
 
@@ -36,15 +21,20 @@ class TripDetailsPage extends React.Component {
     }
         
 
-}
+
 
 const mapStateToProps = state => {
-    return {allTrips: state.tripsReducer.allTrips}
+    return {
+        allTrips: state.tripsReducer.allTrips,
+        clickedTripId: state.tripsReducer.tripId,
+        detailsTripToBeShown: state.tripsReducer.detailsClickedTrip
+
+    }
 }
 
 const mapDispatchToProps = dispatch => ({
-    fetchTrips: () => dispatch(fetchTrips()),
-    
+    fetchClickedTrip: (tripId) => dispatch(fetchClickedTripDetails(tripId)),
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(TripDetailsPage);

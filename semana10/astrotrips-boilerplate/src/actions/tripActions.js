@@ -25,3 +25,24 @@ export const getTripIdAction = (tripId) => ({
         tripId
     }
 })
+
+const setClickedTripDetails = (details) => ({
+    type: "SET_CLICKED_TRIP_DETAILS",
+    payload: {
+        details
+    }
+})
+
+export const fetchClickedTripDetails = (clickedTripId) => async (dispatch) => {
+    try {
+        const response = await axios.get(
+            `https://us-central1-missao-newton.cloudfunctions.net/futureX/andressa/trip/${clickedTripId}?=`)
+
+            dispatch(setClickedTripDetails(response.data.trip))
+
+    } catch(error) {
+        console.log(error)
+        window.alert("Não foi possível carregar os dados da viagem")
+    }
+}
+
