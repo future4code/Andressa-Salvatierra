@@ -18,7 +18,7 @@
   `
 
 
-  class PostCard extends React.Component {
+  export class PostCard extends React.Component {
     
     constructor(props) {
       super(props);

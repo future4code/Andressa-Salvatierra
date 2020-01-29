@@ -1,10 +1,10 @@
 import React from "react";
-import { LoginPage } from "./index"
+import { PostCard } from "./index"
 import renderer from "react-test-renderer";
 
-it("Tests if LoginPage renders correctly", () => {
+it("Tests if the PostCard (single post container) renders correctly", () => {
     const tree = renderer
-        .create(<LoginPage></LoginPage>)
+        .create(<PostCard />)
         .toJSON()
     expect(tree).toMatchSnapshot()
 })

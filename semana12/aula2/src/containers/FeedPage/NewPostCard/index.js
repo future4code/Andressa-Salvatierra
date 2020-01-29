@@ -16,7 +16,7 @@ const InputContainer = styled.div`
   align-items: center;
 `
 
-class NewPostCard extends React.Component {
+export class NewPostCard extends React.Component {
     constructor(props) {
         super(props);
 
