@@ -1,15 +1,17 @@
-import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
+import React from 'react'
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent'
+import Typography from '@material-ui/core/Typography'
 import { connect } from "react-redux"
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import styled from "styled-components"
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
+import InputLabel from '@material-ui/core/InputLabel'
+import styled from 'styled-components'
 
 const InputContainer = styled.div`
-    text-align: center;
-
+    text-align: center; 
 `
 
 
@@ -47,11 +49,12 @@ class NewToDo extends React.Component {
             <Card>
                 <InputContainer>
                     <CardContent>
-                        <Typography variant="h5">
+                        <Typography variant="h5" color="secondary">
                             Crie uma nova tarefa!
                         </Typography>
                         <br />
-                        <TextField 
+                        <InputLabel htmlFor="age-simple">Para qual dia da semana?</InputLabel>
+                        <Select 
                         name="day"
                         type="day"
                         label="Dia da semana" 
@@ -59,14 +62,23 @@ class NewToDo extends React.Component {
                         fullWidth 
                         value={day}
                         onChange={this.handleFieldChange}
-                        />
+                        >
+                            <MenuItem value=""> <em>Escolha o dia</em> </MenuItem>
+                            <MenuItem value="monday"> Segunda </MenuItem>
+                            <MenuItem value="tuesday"> Terça </MenuItem>
+                            <MenuItem value="wednesday"> Quarta </MenuItem>
+                            <MenuItem value="thursday"> Quinta </MenuItem>
+                            <MenuItem value="friday"> Sexta </MenuItem>
+                            <MenuItem value="saturday"> Sábado </MenuItem>
+                            <MenuItem value="sunday"> Domingo </MenuItem>
+                        </Select>
                         <br/> <br />
                         <TextField 
                         name="text"
                         type="text"
                         label="Tarefa" 
                         placeholder="O que?" 
-                        fullWidth multiline rows='2'
+                        fullWidth
                         value={text}
                         onChange={this.handleFieldChange}
                         />
