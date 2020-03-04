@@ -1,0 +1,90 @@
+## 1. Cidades ##
+
+1. 
+SELECT Name, District, Population FROM city
+ORDER by Population DESC
+LIMIT 5;
+
+2.
+SELECT AVG(Population), District FROM city
+GROUP BY District
+ORDER BY avg(Population) DESC;
+
+3.
+SELECT COUNT(*), District FROM city
+GROUP BY District
+ORDER BY 1 DESC;
+
+4. 
+SELECT COUNT(*), countryCode FROM city
+GROUP BY countryCode
+ORDER BY 1 DESC
+LIMIT 10;
+
+## 2. Países ##
+
+1.
+SELECT Name, Continent, Population FROM country
+WHERE Population > 100000
+ORDER BY 3 DESC
+LIMIT 100;
+
+2.
+SELECT COUNT(*) Population FROM country
+WHERE Population > 5000000;
+
+3.
+SELECT SUM(Population) "Soma da População", Continent FROM country
+WHERE Continent = "Asia";
+
+4.
+SELECT COUNT(GovernmentForm), GovernmentForm FROM country
+WHERE GovernmentForm LIKE "%Republic%" OR GovernmentForm LIKE "%Monarchy%"
+GROUP BY GovernmentForm;   
+
+5.
+SELECT COUNT(GovernmentForm), GovernmentForm FROM country
+GROUP BY GovernmentForm
+ORDER BY 1 DESC
+LIMIT 1; 
+
+6.
+SELECT AVG(Population), Continent FROM country
+GROUP BY Continent;
+
+7.
+SELECT IndepYear, Name FROM country
+ORDER BY 1 DESC
+LIMIT 10;
+
+8.
+SELECT AVG(LifeExpectancy), LOWER(Continent) FROM country
+GROUP BY Continent;
+
+9.
+SELECT SUM(SurfaceArea), Continent FROM country
+GROUP BY Continent
+ORDER BY 1 DESC
+LIMIT 3;
+
+## Escrita ##
+
+INSERT INTO films (film_id, title, release_year, length)
+VALUES (1010, "Harry Potter and the Order of The Phoenix", 2007, 142);
+
+1.
+ALTER TABLE films
+ADD watched BOOL DEFAULT FALSE;
+
+2.
+UPDATE films
+SET watched = TRUE
+WHERE rating = "PG-13";
+
+3.
+ALTER TABLE films
+ADD lucky_number INT DEFAULT 0;
+
+4.
+UPDATE films
+SET lucky_number = FLOOR(1000*RAND());
