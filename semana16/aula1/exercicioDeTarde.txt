@@ -1,0 +1,78 @@
+## 1. Cinema - Atores ##
+a) 
+SELECT first_name, last_name FROM actors
+WHERE last_name LIKE "%a%";
+
+b)
+select last_name from actors
+where first_name = "DAN" or first_name = "JULIA";
+
+c)
+select first_name, last_name from actors
+where first_name = "ANGELINA" or first_name like "%b%";
+
+## Manipulação da tabela atores no `bouman-andressa` ##
+
+use `bouman-andressa`;
+create table actors as (
+select * from exercicios.actors 
+);
+
+insert into actors (actor_id, first_name, last_name)
+values (201, "BRUCE", "WILLIS");
+
+select * from actors;
+
+## 2. Cinema - Filmes ##
+
+a)
+select title, description from films 
+where length > 120;
+
+b)
+select description, release_year, rating from films 
+where description like "%documentary%";
+
+c)
+select title, release_year, special_features from films 
+where title like "a%" and rating = "NC-17";
+
+d)
+select title, description, release_year, length, rating, special_features from films 
+where special_features like "%trailers%"
+and rating = "PG-13"
+and title like "%d%";
+
+## Manipulação da tabela films no `bouman-andressa` ##
+
+use `bouman-andressa`;
+create table films as (
+select * from exercicios.films 
+);
+
+insert into films (film_id, title, description, release_year, length, special_features)
+values (1001, "THE SOCIAL NETWORK", "Mark Zuckerberg creates a social networking site, Facebook, with the help of his friend Eduardo Saverin. 
+But soon, a string of lies tears their relationship apart even as Facebook connects people.",
+2010, 121, "Commentaries");
+
+select * from films where title = "the social network";
+
+insert into films (film_id, title, release_year, length)
+values (1002, "MULAN", 2020, 120);
+
+select * from films where title = "mulan";
+
+insert into films (film_id, title, release_year, length)
+values (1003, "PARASITE", 2019, 132);
+
+select * from films where title = "parasite";
+
+insert into films (film_id, title, release_year, length)
+values (1005, "MOONLIGHT", 2016, 115);
+
+select * from films where title = "moonlight";
+
+insert into films (film_id, title, release_year, length)
+values (1005, "GREEN BOOK", 2018, 130);
+
+select * from films where title = "GREEN BOOK";
