@@ -1,0 +1,89 @@
+## Criação das tabelas ## 
+
+CREATE TABLE autores (
+    id INT NOT NULL,
+    primeiro_nome VARCHAR(255),
+    ultimo_nome VARCHAR(255),
+    nacionalidade VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE editoras (
+    id INT NOT NULL,
+    nome VARCHAR(255),
+    cidade VARCHAR(255),
+    fundacao DATE,
+    PRIMARY KEY (id)
+);
+
+CREATE TABLE usuarios (
+    id INT NOT NULL,
+    primeiro_nome VARCHAR(255),
+    ultimo_nome VARCHAR(255),
+    nacionalidade VARCHAR(255),
+    data_nascimento DATE,
+    PRIMARY KEY (id)
+);
+
+alter table usuarios modify id int not null auto_increment;
+
+CREATE TABLE livros (
+    id INT NOT NULL,
+    titulo VARCHAR(255),
+    autor_id INT NOT NULL,
+    editora_id INT NOT NULL,
+    ano INT,
+    PRIMARY KEY (id),
+    FOREIGN KEY (autor_id)
+        REFERENCES autores (id),
+    FOREIGN KEY (editora_id)
+        REFERENCES editoras (id)
+);
+
+alter table livros modify ano date;
+
+CREATE TABLE usuarios_livros (
+    usuario_id INT NOT NULL,
+    livro_id INT NOT NULL,
+    PRIMARY KEY (usuario_id , livro_id),
+    FOREIGN KEY (usuario_id)
+        REFERENCES usuarios (id),
+    FOREIGN KEY (livro_id)
+        REFERENCES livros (id)
+);
+
+## Tabelas foram populadas usando o mock de dados fornecidos no Notion ##
+## Exercícios ##
+
+
+1.
+SELECT 
+    concat(primeiro_nome, " ", ultimo_nome) as nome, titulo, ano
+FROM
+    autores
+        JOIN
+    livros ON autores.id = autor_id
+WHERE
+  primeiro_nome LIKE 'J. K.%';
+
+2.
+SELECT 
+    CONCAT(primeiro_nome, ' ', ultimo_nome) AS nome, titulo
+FROM
+    autores
+        JOIN
+    livros ON autores.id = autor_id
+WHERE
+    primeiro_nome LIKE 'A%';
+
+3.
+SELECT 
+    COUNT(*), CONCAT(primeiro_nome, ' ', ultimo_nome) AS nome
+FROM
+    autores
+        JOIN
+    livros ON autores.id = autor_id
+GROUP BY nome;
+
+4. NAO FINALIZADO AINDA
+insert into usuarios (usuario_id, livro_id) values (4, 5);
