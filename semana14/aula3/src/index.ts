@@ -3,42 +3,16 @@ const fs = require("fs")
 
 const directoryPath = path.join(__dirname, "../textos")
 
-new Promise((resolve, reject) => {
-    let files = fs.readdir(directoryPath, (err: Error, files: Buffer) => {
-        if (err) {
-            reject("Error getting directory information.")
-        } else {
-            resolve(files)
-        }
-    })
-}).then((files: Buffer) => {
-    getFileContent(files)
-    
-}).catch((erro) => {
-    console.error(erro)
-})
-
-let promises
-
-const getFileContent = (files: Buffer) => {
-    promises = files.map((file): any => {
-        return new Promise((resolve, reject) => {
-            fs.readFile(`${directoryPath}/${file}`, (err: Error, data: Buffer) => {
-                if (err) {
-                    reject(err)
-                } else {
-                    resolve(String(data))
-                }
-            })
-        })
-    })
-
+fs.readdir(directoryPath, (err: Error, files: []) => {
+    if (err) {
+        console.log("Error reading files.")
+    } else {
+        return files
 }
 
-Promise.all(promises).then((data) => {
-    console.log(data)
-}).catch(error => {
-    console.error(error)
-})
-
-
+files.forEach((file) => {
+    let filesContent = ""
+    fs.readFile(`${directoryPath}/${file}`, (err: Error, data: Buffer) => {
+        if (err) throw err;
+        filesContent += data.toString()
+    })})
