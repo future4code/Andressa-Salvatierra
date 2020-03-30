@@ -1,0 +1,24 @@
+Exercício 1
+
+1. 
+Transferir todas as pastas do projeto React já criado para o computador AWS, fazer o build e deixar o npm run start 
+rodando
+
+2. 
+Escolhi o projeto Future Eats, está rodando na minha máquina
+
+3. 
+ssh -i semana20-AWS.pem ubuntu@52.203.80.81
+
+4. 5. e 6.
+git clone https://github.com/future4code/bouman-future-eats.git --> clona o repositório github na maquina AWS
+rm package-lock.json --> excluir para não dar erro na hora de instalar os pacotes e bibliotecas
+npm i --> instalar os pacotes/bibliotecas/dependências
+npm run build --> criar a pasta build
+cd build ; sudo python -m SimpleHTTPServer 80 --> começa a rodar o projeto na porta padrão, devidamente configurada
+
+7.
+A principal diferença entra o que foi feito em aula e agora foi em relacão à origem da pasta do projeto React. Em aula,
+criamos um projeto React do zero diretamente na máquina AWS. Neste exercício, foi utilizada a pasta de um projeto React
+passado, que estava disponível no github. A pasta foi clonada na máquina AWS, e após a instalação das depedências, foi 
+colocada para rodar na porta padrão 80.
