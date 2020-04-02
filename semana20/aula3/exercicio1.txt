@@ -1,0 +1,97 @@
+Tarefa 1)
+Feito endpoint GET https://y8vag6xli2.execute-api.us-east-1.amazonaws.com/v1/test
+
+Tarefa 2)
+
+1.
+
+INPUT:
+    { 
+        "body": {
+            "message": "Hello World"
+        }
+    }
+
+OUTPUT:
+    true
+
+INPUT:
+    {
+        "queryStringParameters": {   
+            "city":"Seattle",
+            "name":"John"
+        }
+    }
+OUTPUT:
+    true
+
+INPUT:
+    {
+        "headers": {
+            "apikey": "key"
+        }
+    }
+OUTPUT:
+    true
+
+2.
+Precisamos usar o comando JSON.parse() uma vez que a propriedade body retornada é uma string, e não um objeto
+
+3.
+A função lambda retorna um status 200 e um body {
+    "hasBody": true,
+    "hasQueries": true
+}, {
+    "hasBody": true,
+    "hasQueries": false
+} ou {
+    "hasBody": false,
+    "hasQueries": true
+}, 
+se houver body e/ou path parameters no evento/input
+
+4.
+A função lambda retorna um status 400 e um body { "message": "Missing input!" } quando tanto o body quanto o(s) 
+path parameter(s) for(em) undefined ou null, ou seja, não existir(em) no evento/input.
+
+5.
+Feito, testado atrvés do Postman 
+
+Tarefa 3)
+Feito
+
+exports.handler = async event => {
+    const cep = JSON.parse(event.body).cep
+    const verifyExistence = input => {
+        return input !== undefined && input !== null;
+};
+    
+  try {
+    if (!verifyExistence(cep)) {
+        throw new Error("Insira o CEP!") 
+    }
+    
+    if (cep.length !== 9 && cep.length < 9) {
+        throw new Error("CEP deve ter ao menos 8 dígitos e '-' ")
+    }
+    
+    if (!cep.includes("-")) {
+        throw new Error("Falta '-' ") 
+    }
+    
+    return {
+        statusCode: 200,
+        body: JSON.stringify({ 
+            "message": "CEP válido" 
+        })
+    }
+    
+  } catch (err) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: err.message
+      })
+    };
+  }
+};
