@@ -1,38 +1,22 @@
 const path = require("path");
 const fs = require("fs");
 const directoryPath = path.join(__dirname, "../textos");
-new Promise((resolve, reject) => {
-    let files = fs.readdir(directoryPath, (err, files) => {
+const readFilesPromise = new Promise((resolve, reject) => {
+    fs.readdir(directoryPath, function (err, files) {
         if (err) {
-            reject("Error getting directory information.");
+            reject(console.log("Error reading files."));
         }
         else {
-            resolve(files);
+            let filesContent = "";
+            files.forEach((file) => {
+                fs.readFile(`${directoryPath}/${file}`, (err, data) => {
+                    if (err)
+                        throw err;
+                    filesContent.concat(data.toString());
+                    resolve(console.log(filesContent));
+                });
+            });
         }
     });
-}).then((files) => {
-    getFileContent(files);
-}).catch((erro) => {
-    console.error(erro);
-});
-let promises;
-const getFileContent = (files) => {
-    promises = files.map((file) => {
-        return new Promise((resolve, reject) => {
-            fs.readFile(`${directoryPath}/${file}`, (err, data) => {
-                if (err) {
-                    reject(err);
-                }
-                else {
-                    resolve(String(data));
-                }
-            });
-        });
-    });
-};
-Promise.all(promises).then((data) => {
-    console.log(data);
-}).catch(error => {
-    console.error(error);
 });
 //# sourceMappingURL=index.js.map

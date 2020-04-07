@@ -1,0 +1,12 @@
+Exercício 2
+
+1. 2. e 3. 
+Segui o tutorial e liberei acesso para a porta 3306 no site da AWS
+
+4.
+De forma geral não tive dificuldades para realizar os passos, já que estou acostumada com acessar computadores remotamente,
+sem interface gráfica. De fato, a visualização dos passos realizados é mais difícil quando utlizamos a linha de comando,
+sem a visualizacão dos passos que fazemos no MySQLWorkbench. 
+Porém, os passos foram realizados com muito mais rapidez do que estamos acostumados, o que se perde em visualização,
+se ganha em rapidez.
+
