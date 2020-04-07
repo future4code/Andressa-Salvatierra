@@ -1,0 +1,44 @@
+Exercicio 1
+
+b.
+{
+    statusCode: 400,
+    body: { message: "Missing input" }
+}
+
+c.
+{
+    statusCode: 400,
+    body: { message: "Missing input" }
+}
+
+d.
+{
+      statusCode: 400,
+      body: { message: "Missing email" }
+}
+
+e.
+{
+      statusCode: 400,
+      body: { message: "Invalid password" }
+}
+
+f.
+{
+    statusCode: 200,
+    body: { message: "User is correct" }
+}
+
+g.
+linha 22, no bloco if que valida a presença do email. 
+
+h.
+  "user": {
+		"info": {
+			"name": "Astrodev",
+			"email": "astrodev@f4.com.br",
+			"password": "123456"
+		}
+  }
+}
