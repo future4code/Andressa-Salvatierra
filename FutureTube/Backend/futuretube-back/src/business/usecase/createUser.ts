@@ -22,15 +22,15 @@ export class CreateUserUC {
       id,
       input.name,
       input.email,
-      User.mapStringsToUserType(input.type),
-      pass
+      pass,
+      input.birthDate,
+      input.picture
     );
     await this.db.createUser(user);
 
     //gerar token
     const token = this.authenticationGateway.generateToken({
-      userId: user.getId(),
-      type: user.getType()
+      userId: user.getId()
     });
 
     return {
@@ -42,8 +42,9 @@ export class CreateUserUC {
 interface CreateUserUCInput {
   name: string;
   email: string;
-  type: string;
   password: string;
+  birthDate: string;
+  picture: string;
 }
 
 interface CreateUserUCOutput {

@@ -21,16 +21,16 @@ export class LoginUserUC {
     // compara a senha salva com a senha enviada
 
     if (!await this.cryptographyGateway.compare(input.password, user.getPassword())) {
-      throw new Error("Wrong Password or Email");
+      throw new Error("Wrong email or password");
     }
 
     // Se estiver compatível, geramos o token e o usuário está logado
     const token = this.authenticationGateway.generateToken({
-      userId: user.getId(),
-      type: user.getType()
+      userId: user.getId()
     });
 
     return {
+      message: "User logged in succesfully",
       token
     };
   }

@@ -1,13 +1,13 @@
 import { Request, Response } from "express";
 import { CreateUserUC } from "../../business/usecase/createUser";
-import { UserDatabase } from "../../data/userDatabase";
+import { UserDB } from "../../data/userDB";
 import { JwtAuthorizer } from "../../services/jwtAuthorizer";
 import { BcryptService } from "../../services/bcryptService";
 
 export const createUserEndpoint = async (req: Request, res: Response) => {
   try {
     const uc = new CreateUserUC(
-      new UserDatabase(),
+      new UserDB(),
       new JwtAuthorizer(),
       new BcryptService()
     );
@@ -15,8 +15,9 @@ export const createUserEndpoint = async (req: Request, res: Response) => {
     const result = await uc.execute({
       name: req.body.name,
       email: req.body.email,
-      type: req.body.type,
-      password: req.body.password
+      password: req.body.password,
+      birthDate: req.body.birthDate,
+      picture: req.body.picture
     });
 
     res.status(200).send(result);

@@ -2,7 +2,7 @@
 
 export interface AuthenticationGateway {
   generateToken(input: UsersInfoForToken): string;
-  getUsersInfoFromToken(token: string): UsersInfoForToken;
+  // getUsersInfoFromToken(token: string): UsersInfoForToken;
 }
 
 // userId, type
