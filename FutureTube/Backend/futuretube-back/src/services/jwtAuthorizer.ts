@@ -1,6 +1,6 @@
 import {
   AuthenticationGateway,
-  UsersInfoForToken
+  UserInfoForToken
 } from "../business/gateways/authenticationGateway";
 import * as jwt from "jsonwebtoken";
 
@@ -8,7 +8,7 @@ export class JwtAuthorizer implements AuthenticationGateway {
   private SECRET_KEY = "BATATINHA";
   private expiresIn = "10h";
 
-  public generateToken(input: UsersInfoForToken): string {
+  public generateToken(input: UserInfoForToken): string {
     const token = jwt.sign(
       {
         userId: input.userId
@@ -22,10 +22,10 @@ export class JwtAuthorizer implements AuthenticationGateway {
     return token;
   }
 
-  // public getUsersInfoFromToken(token: string): UsersInfoForToken {
-  //   const result = jwt.verify(token, this.SECRET_KEY) as UsersInfoForToken; // userId, type
-  //   return {
-  //     userId: result.userId
-  //   };
-  // }
+  public getUserInfoFromToken(token: string): UserInfoForToken {
+    const result = jwt.verify(token, this.SECRET_KEY) as UserInfoForToken; 
+    return {
+      userId: result.userId
+    };
+  }
 }

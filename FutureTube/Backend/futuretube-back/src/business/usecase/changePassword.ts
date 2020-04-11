@@ -18,7 +18,7 @@ export class ChangePasswordUC {
 
     // [CHECK] INPUT: token, email, senha antiga, senha nova
     // [CHECK] token -> id do usuário
-    const usersInfo = this.authenticationGateway.getUsersInfoFromToken(
+    const usersInfo = this.authenticationGateway.getUserInfoFromToken(
       input.token
     );
     const id = usersInfo.userId;
@@ -31,7 +31,7 @@ export class ChangePasswordUC {
 
     // usuário -> 1. comparar o email enviado na requisicão com o email falso
     if (user.getEmail() !== input.email) {
-      throw new Error("Incorret information");
+      throw new Error("Incorrect information");
     }
 
     // usuário -> 2. compara a senha antiga do usuário com a senha salva no banco
@@ -40,7 +40,7 @@ export class ChangePasswordUC {
       user.getPassword()
     );
     if (!isPasswordCorrect) {
-      throw new Error("Incorret information");
+      throw new Error("Incorrect information");
     }
 
     // banco -> autaliza a senha com a nova senha
@@ -49,8 +49,7 @@ export class ChangePasswordUC {
 
     // [CHECK] devolver um novo token
     const token = this.authenticationGateway.generateToken({
-      userId: user.getId(),
-      type: user.getType()
+      userId: user.getId()
     });
 
     return {
