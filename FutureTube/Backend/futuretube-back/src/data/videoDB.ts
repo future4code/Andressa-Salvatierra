@@ -4,20 +4,21 @@ import { Video } from "../business/entities/video";
 
 
 export class VideoDB extends BaseDB implements VideoGateway {
-    private videoTableName = "video_futuretube"
+    private videoTableName = "videos_futuretube"
 
-    public async createVideo(video: Video): Promise<void> {
+    public async uploadVideo(video: Video): Promise<void> {
         await this.connection.raw(`
-        INSERT INTO ${this.videoTableName} (id, name, email, password, birthDate, picture)
+        INSERT INTO ${this.videoTableName} (id, url, title, description, userId)
         VALUES(
             '${video.getId()}',
             '${video.getURL()}',
             '${video.getTitle()}',
-            '${video.getDescription()}'
+            '${video.getDescription()}',
+            '${video.getUserId()}'
         )`);
     }
 
-    
+
 
 
 
