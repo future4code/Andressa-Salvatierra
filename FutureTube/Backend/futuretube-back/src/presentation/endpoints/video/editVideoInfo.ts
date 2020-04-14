@@ -1,26 +1,26 @@
 import { Request, Response } from "express";
-import { UploadVideoUC } from "../../../business/usecase/video/uploadVideo"
-import { VideoDB } from "../../../data/videoDB"
-import { JwtAuthorizer } from "../../../services/jwtAuthorizer"
+import { EditVideoInfoUC } from "../../../business/usecase/video/editVideoInfo";
+import { VideoDB } from "../../../data/videoDB";
+import { JwtAuthorizer } from "../../../services/jwtAuthorizer";
 
-export const uploadVideoEndpoint = async (req: Request, res: Response) => {
+export const EditVideoInfoEndpoint = async (req: Request, res: Response) => {
     try {
-        const uc = new UploadVideoUC(
+        const uc = new EditVideoInfoUC(
             new VideoDB(),
             new JwtAuthorizer()
         )
 
         const result = await uc.execute({
             token: req.headers.auth as string,
-            url: req.body.url,
+            videoId: req.body.videoId,
             title: req.body.title,
             description: req.body.description
         })
 
         res.status(200).send(result)
-    } catch (err){
+    } catch (err) {
         res.status(err.status || 400).send({
-            errorMessage: err.message
+            errMessage: err.message
         })
     }
 }

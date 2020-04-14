@@ -22,7 +22,7 @@ export const createUserEndpoint = async (req: Request, res: Response) => {
 
     res.status(200).send(result);
   } catch (err) {
-    res.status(400).send({
+    res.status(err.status || 400).send({
       errMessage: err.message
     });
   }

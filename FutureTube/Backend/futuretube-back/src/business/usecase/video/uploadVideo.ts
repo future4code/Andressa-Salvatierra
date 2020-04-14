@@ -10,13 +10,21 @@ export class UploadVideoUC {
       ) {}
 
     public async execute(input: UploadVideoUCInput): Promise<UploadVideoUCOutput> {
+        if (!input.token) {
+            throw new Error("Missing authorization token, please log in to continue");
+        }
+
+        if (!input.url) {
+            throw new Error("Please provide a video URL")
+        }
+
+        if (!input.title) {
+            throw new Error("Please provide a video title")
+        }
+
         const id = v4()
         const userIdFromToken = this.authenticationGateway.getUserInfoFromToken(input.token)
         const userId = userIdFromToken.userId
-
-        // if (!userIdFromToken || !userId) {
-        //     throw new Error("User not logged in")
-        // }
 
         const video = new Video(
             id,
@@ -26,13 +34,6 @@ export class UploadVideoUC {
             userId
         )
 
-        if (!input.url) {
-            throw new Error("Please provide a video URL")
-        }
-
-        if (!input.title) {
-            throw new Error("Please provide a video title")
-        }
         await this.db.uploadVideo(video)
 
         return {

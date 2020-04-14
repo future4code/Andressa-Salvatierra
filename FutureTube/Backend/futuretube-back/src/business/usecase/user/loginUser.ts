@@ -9,7 +9,7 @@ export class LoginUserUC {
     private cryptographyGateway: CryptographyGateway
   ) {}
 
-  public async execute(input: LoginUserUCInput): Promise<any> {
+  public async execute(input: LoginUserUCInput): Promise<LoginUserUCOutput> {
     // email, e a senha
     // pegar as infos do usuário a partir do email dele => FUNCAO NO BANCO
     const user = await this.db.getUserByEmail(input.email);
@@ -43,4 +43,5 @@ interface LoginUserUCInput {
 
 interface LoginUserUCOutput {
   token: string;
+  message: string;
 }

@@ -13,7 +13,7 @@ export class ChangePasswordUC {
     input: ChangePasswordUCInput
   ): Promise<ChangePasswordUCOutput> {
     if (!input.token) {
-      throw new Error("Missing authorization token");
+      throw new Error("Missing authorization token, please log in to continue");
     }
 
     // [CHECK] INPUT: token, email, senha antiga, senha nova
