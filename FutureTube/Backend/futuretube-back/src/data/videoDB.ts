@@ -46,9 +46,15 @@ export class VideoDB extends BaseDB implements VideoGateway {
           id: `${videoId}`
         })
         .update({
-          title: `${title}`,
-          description: `${description}`
+          title,
+          description
         })
+    }
+
+    public async deleteVideo(videoId: string): Promise<void> {
+        await this.connection.raw(`
+            DELETE FROM ${this.videoTableName} WHERE id = '${videoId}'
+        `)
     }
 
 

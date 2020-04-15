@@ -12,7 +12,7 @@ export const GetVideoByUserIdEndpoint = async (req: Request, res: Response) => {
 
         const result = await uc.execute({
             token: req.headers.auth as string,
-            userId: req.query.userId
+            userId: req.params.userId
         })
 
         res.status(200).send({
