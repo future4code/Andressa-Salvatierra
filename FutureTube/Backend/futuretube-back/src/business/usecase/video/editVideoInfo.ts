@@ -37,8 +37,8 @@ export class EditVideoInfoUC {
 interface EditVideoInfoUCInput {
     token: string;
     videoId: string;
-    title?: string;
-    description?: string;
+    title: string;
+    description: string;
 }
 
 interface EditVideoInfoUCOutput {

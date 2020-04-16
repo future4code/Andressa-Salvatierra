@@ -31,7 +31,10 @@ export class LoginUserUC {
 
     return {
       message: "User logged in succesfully",
-      token
+      token,
+      name: user.getName(),
+      email: user.getEmail(),
+      picture: user.getPicture()
     };
   }
 }
@@ -42,6 +45,9 @@ interface LoginUserUCInput {
 }
 
 interface LoginUserUCOutput {
-  token: string;
   message: string;
+  token: string;
+  name: string;
+  email: string;
+  picture: string;
 }

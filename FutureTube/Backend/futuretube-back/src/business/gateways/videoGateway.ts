@@ -5,4 +5,6 @@ export interface VideoGateway {
     getVideoByUserId(id: string): Promise<Video[] | undefined>
     editVideoInfo(userId: string, videoId: string, title: string, description: string): Promise<void>
     deleteVideo(videoId: string): Promise<void>
+    getAllVideos(page: number): Promise<Video[] | undefined>
+    getVideoInfoById(videoId: string): Promise<any>
 }
