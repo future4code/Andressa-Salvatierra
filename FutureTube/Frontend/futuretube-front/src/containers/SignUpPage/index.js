@@ -1,11 +1,13 @@
 import React from "react"
 import { connect } from 'react-redux';
-import Header from "../../components/Header"
+import Header from "../Header"
 
-const SignUp = () => (
+const SignUp = () => {
+  
+  return (
     <div>
-        <Header></Header>
+        <Header text="Sign Up"/>
     </div>
-  );
+  )};
   
 export default connect()(SignUp)
