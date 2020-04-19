@@ -68,7 +68,7 @@ const MenuAppBar = (props) => {
       <AppBar position="static">
         <Toolbar>
           <StyledLogo src={LogoImage}></StyledLogo>
-          <Typography color="secondary" variant="h6" className={classes.title}>
+          <Typography color="secondary" variant="h5" className={classes.title}>
             {props.text}
           </Typography>
           <div>
@@ -114,7 +114,7 @@ const MenuAppBar = (props) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  goToHome: () => dispatch(push(routes.home)),
+  goToHome: () => dispatch(push(routes.root)),
   goToUserVideos: () => dispatch(push(routes.userVideos)),
   goToUploadVideo: () => dispatch(push(routes.uploadVideo)),
   goToChangePassword: () => dispatch(push(routes.changePassword))

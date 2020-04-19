@@ -8,10 +8,10 @@ import ChangePassword from "../ChangePasswordPage"
 import UserVideos from "../UserVideosPage"
 import UploadVideo from "../UploadVideoPage"
 import VideoDetails from "../VideoDetailsPage"
+import NotFoundPage from "../NotFoundPage"
 
 export const routes = {
-  root: '/home',
-  home: '/home',  
+  root: '/',
   login: '/login',
   signUp: '/signup',
   changePassword: '/changepassword',
@@ -26,13 +26,15 @@ function Router(props) {
     <ConnectedRouter history={props.history}>
       <Switch>
         <Route exact path={routes.root} component={Home} />
-        <Route exact path={routes.home} component={Home} /> 
         <Route exact path={routes.login} component={Login} />
         <Route exact path={routes.signUp} component={SignUp} />
         <Route exact path={routes.changePassword} component={ChangePassword} />
         <Route exact path={routes.userVideos} component={UserVideos} />
         <Route exact path={routes.uploadVideo} component={UploadVideo} />
         <Route exact path={routes.videoDetails} component={VideoDetails} />
+        <Route>
+          <NotFoundPage />
+        </Route>
       </Switch>
     </ConnectedRouter>
   );

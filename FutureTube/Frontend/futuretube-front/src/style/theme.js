@@ -10,5 +10,8 @@ export default createMuiTheme({
       main: '#D83F87'
     } 
     },
+    typography: {
+      fontFamily: "Source Sans Pro, sans-serif"
+    }
 });
    
