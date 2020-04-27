@@ -103,7 +103,7 @@ const MenuAppBar = (props) => {
                 <MenuItem onClick={props.goToUploadVideo}>Upload Video</MenuItem>
                 <MenuItem onClick={props.goToChangePassword}>Change Password</MenuItem>
               </div>
-              : <Button>Log in</Button>
+              : <Button onClick={props.goToLogin}>Log in</Button>
             }
             </Menu>
           </div>
@@ -117,7 +117,8 @@ const mapDispatchToProps = dispatch => ({
   goToHome: () => dispatch(push(routes.root)),
   goToUserVideos: () => dispatch(push(routes.userVideos)),
   goToUploadVideo: () => dispatch(push(routes.uploadVideo)),
-  goToChangePassword: () => dispatch(push(routes.changePassword))
+  goToChangePassword: () => dispatch(push(routes.changePassword)),
+  goToLogin: () => dispatch(push(routes.login))
 })
 
 export default connect(null, mapDispatchToProps)(MenuAppBar);
