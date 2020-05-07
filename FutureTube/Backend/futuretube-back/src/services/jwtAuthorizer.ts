@@ -5,7 +5,7 @@ import {
 import * as jwt from "jsonwebtoken";
 
 export class JwtAuthorizer implements AuthenticationGateway {
-  private SECRET_KEY = "BATATINHA";
+  private SECRET_KEY = process.env.MY_SECRET_KEY as string;
   private expiresIn = "10h";
 
   public generateToken(input: UserInfoToken): string {

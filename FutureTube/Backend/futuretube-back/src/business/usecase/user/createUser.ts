@@ -12,12 +12,9 @@ export class CreateUserUC {
   ) {}
 
   public async execute(input: CreateUserUCInput): Promise<CreateUserUCOutput> {
-    // gerar um id,
     const id = v4();
 
-    // criptopgrar a senha
     const pass = await this.cryptographyGateway.encrypt(input.password)
-    // salvar o usuário no banco
     const user = new User(
       id,
       input.name,
@@ -28,7 +25,6 @@ export class CreateUserUC {
     );
     await this.db.createUser(user);
 
-    //gerar token
     const token = this.authenticationGateway.generateToken({
       userId: user.getId()
     });

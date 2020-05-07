@@ -16,25 +16,20 @@ export class ChangePasswordUC {
       throw new Error("Missing authorization token, please log in to continue");
     }
 
-    // [CHECK] INPUT: token, email, senha antiga, senha nova
-    // [CHECK] token -> id do usuário
     const usersInfo = this.authenticationGateway.getUserInfoFromToken(
       input.token
     );
     const id = usersInfo.userId;
 
-    // id do usuário -> banco pegar o usuário com esse id
     const user = await this.db.getUserById(id);
     if (!user) {
       throw new Error("User not found");
     }
 
-    // usuário -> 1. comparar o email enviado na requisicão com o email falso
     if (user.getEmail() !== input.email) {
       throw new Error("Incorrect information");
     }
 
-    // usuário -> 2. compara a senha antiga do usuário com a senha salva no banco
     const isPasswordCorrect = await this.cryptographyGateway.compare(
       input.oldPassword,
       user.getPassword()
@@ -43,11 +38,9 @@ export class ChangePasswordUC {
       throw new Error("Incorrect information");
     }
 
-    // banco -> autaliza a senha com a nova senha
     const pass = await this.cryptographyGateway.encrypt(input.newPassword);
     await this.db.updatePassword(user.getId(), pass);
 
-    // [CHECK] devolver um novo token
     const token = this.authenticationGateway.generateToken({
       userId: user.getId()
     });
